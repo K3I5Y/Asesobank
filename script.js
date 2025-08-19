@@ -97,16 +97,11 @@ function actualizarResumen() {
 }
 
 function evaluarMesada() {
-  const gastos = movimientos
-    .filter(m => m.tipo === "gasto")
-    .reduce((sum, m) => sum + m.monto, 0);
-
-  const ingresos = movimientos
-    .filter(m => m.tipo === "ingreso")
-    .reduce((sum, m) => sum + m.monto, 0);
+  const gastos = movimientos.filter(m => m.tipo === "gasto").reduce((sum, m) => sum + m.monto, 0);
+  const ingresos = movimientos.filter(m => m.tipo === "ingreso").reduce((sum, m) => sum + m.monto, 0);
+  const saldo = ingresos - gastos;
 
   const alerta = document.getElementById("alertaMesada");
-  const saldo = ingresos - gastos;
   const saldoTexto = document.getElementById("saldoDisponible");
   const barra = document.getElementById("progresoMesada");
 
@@ -114,7 +109,7 @@ function evaluarMesada() {
 
   if (mesada > 0) {
     const porcentaje = Math.min((mesada - gastos) / mesada * 100, 100);
-    barra.style.width = `${porcentaje}%`;
+    barra.style.width = `${Math.max(porcentaje, 0)}%`;
     barra.style.background = porcentaje < 0 ? "#b22222" : "#4caf50";
 
     if (gastos > mesada && saldo < 0) {
@@ -169,7 +164,7 @@ function mostrarGrafico() {
       }]
     },
     options: {
-      responsive: true,
+      responsive: false,
       plugins: {
         legend: {
           position: "bottom"
