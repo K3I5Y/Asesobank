@@ -3,56 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Financiera</title>
+  <title>ASESOBANK</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
     <h1>💰 Mi Financiera</h1>
-    <p>Controla tus gastos y accede a nuestros servicios</p>
+    <p>Controla tus ingresos y gastos</p>
   </header>
 
   <main>
+    <section id="mesada">
+      <h2>Tu mesada mensual</h2>
+      <input type="number" id="mesadaInput" placeholder="Ingresa tu mesada">
+    </section>
+
     <section id="registro">
-      <h2>Registrar Gasto</h2>
+      <h2>Registrar Movimiento</h2>
+      <select id="tipo">
+        <option value="gasto">Gasto</option>
+        <option value="ingreso">Ingreso</option>
+      </select>
+
       <input type="text" id="descripcion" placeholder="Descripción">
       <input type="number" id="monto" placeholder="Monto">
+
       <select id="categoria">
-        <option value="asesoria">Asesoría</option>
-        <option value="prestamo">Préstamo</option>
-        <option value="servicio">Servicio</option>
+        <!-- Se llenará dinámicamente -->
       </select>
-      <button onclick="agregarGasto()">Agregar</button>
+
+      <input type="text" id="nuevaCategoria" placeholder="Nueva categoría" style="display:none;">
+
+      <button onclick="agregarMovimiento()">Agregar</button>
     </section>
 
     <section id="lista">
-      <h2>Historial de Gastos</h2>
-      <ul id="gastos"></ul>
+      <h2>Historial</h2>
+      <ul id="movimientos"></ul>
     </section>
 
     <section id="resumen">
-      <h2>Total Gastado</h2>
-      <p id="total">$0.00</p>
-      <canvas id="graficoGastos"></canvas>
-    </section>
-
-    <section id="formulario">
-      <h2>Solicita tu servicio</h2>
-      <input type="text" placeholder="Nombre completo">
-      <input type="email" placeholder="Correo electrónico">
-      <select>
-        <option>Asesoría financiera</option>
-        <option>Préstamo</option>
-        <option>Otro servicio</option>
-      </select>
-      <textarea placeholder="Describe tu necesidad"></textarea>
-      <button>Enviar solicitud</button>
+      <h2>Resumen</h2>
+      <p id="totalGastos">Total Gastos: $0.00</p>
+      <p id="totalIngresos">Total Ingresos: $0.00</p>
+      <p id="alertaMesada"></p>
+      <canvas id="graficoMovimientos"></canvas>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Mi Financiera</p>
+    <p>© 2025 Asesobank</p>
   </footer>
+
+  <script src="chart.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
 
   <script src="chart.min.js"></script>
   <script src="script.js"></script>
