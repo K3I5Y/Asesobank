@@ -113,11 +113,11 @@ function evaluarMesada() {
     barra.style.background = porcentaje < 0 ? "#b22222" : "#4caf50";
 
     if (gastos > mesada && saldo < 0) {
-      alerta.textContent = "⚠️ Has superado tu mesada";
+      alerta.textContent = "⚠️ Cuidado, estás en tu límite 😬";
       alerta.style.background = "#ffcccc";
       alerta.style.color = "#b22222";
     } else {
-      alerta.textContent = "✅ Estás dentro de tu mesada";
+      alerta.textContent = "✅ ¡Buen trabajo! Tu saldo está saludable 💪";
       alerta.style.background = "#ccffcc";
       alerta.style.color = "#006400";
     }
