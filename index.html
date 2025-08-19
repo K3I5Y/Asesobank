@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Financiera</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>💰 Mi Financiera</h1>
+    <p>Controla tus gastos y accede a nuestros servicios</p>
+  </header>
+
+  <main>
+    <section id="registro">
+      <h2>Registrar Gasto</h2>
+      <input type="text" id="descripcion" placeholder="Descripción">
+      <input type="number" id="monto" placeholder="Monto">
+      <select id="categoria">
+        <option value="asesoria">Asesoría</option>
+        <option value="prestamo">Préstamo</option>
+        <option value="servicio">Servicio</option>
+      </select>
+      <button onclick="agregarGasto()">Agregar</button>
+    </section>
+
+    <section id="lista">
+      <h2>Historial de Gastos</h2>
+      <ul id="gastos"></ul>
+    </section>
+
+    <section id="resumen">
+      <h2>Total Gastado</h2>
+      <p id="total">$0.00</p>
+      <canvas id="graficoGastos"></canvas>
+    </section>
+
+    <section id="formulario">
+      <h2>Solicita tu servicio</h2>
+      <input type="text" placeholder="Nombre completo">
+      <input type="email" placeholder="Correo electrónico">
+      <select>
+        <option>Asesoría financiera</option>
+        <option>Préstamo</option>
+        <option>Otro servicio</option>
+      </select>
+      <textarea placeholder="Describe tu necesidad"></textarea>
+      <button>Enviar solicitud</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Mi Financiera</p>
+  </footer>
+
+  <script src="chart.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
