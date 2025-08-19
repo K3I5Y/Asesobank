@@ -124,5 +124,5 @@ function mostrarGrafico() {
   });
 }
 
-// Inicializar categorías al cargar
+// Categorías al cargar
 actualizarCategorias();
