@@ -33,20 +33,23 @@ function mostrarCampoNuevo() {
 }
 
 function agregarMovimiento() {
-  const tipo = document.getElementById('tipo').value;
-  const descripcion = document.getElementById('descripcion').value;
-  const monto = parseFloat(document.getElementById('monto').value);
-  let categoria = document.getElementById('categoria').value;
-  const nuevaCat = document.getElementById('nuevaCategoria').value;
+  const tipo = document.getElementById("tipo").value;
+  const descripcion = document.getElementById("descripcion").value.trim();
+  const monto = parseFloat(document.getElementById("monto").value);
 
-  if (categoria === 'otros' && nuevaCat) categoria = nuevaCat;
+  if (!descripcion || isNaN(monto)) {
+    alert("Por favor, completa la descripción y el monto correctamente.");
+    return;
+  }
 
-  if (descripcion && !isNaN(monto)) {
-    movimientos.push({ tipo, descripcion, monto, categoria });
-    actualizarLista();
-    actualizarResumen();
-    mostrarGrafico();
-    limpiarCampos();
+  const nuevoMovimiento = {
+    tipo: tipo,
+    descripcion: descripcion,
+    monto: monto,
+    fecha: new Date().toLocaleDateString()
+  };
+
+  movimientos.push(nuevoMovimiento);
   }
 }
 
