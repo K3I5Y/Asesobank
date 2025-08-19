@@ -36,20 +36,30 @@ function agregarMovimiento() {
   const tipo = document.getElementById("tipo").value;
   const descripcion = document.getElementById("descripcion").value.trim();
   const monto = parseFloat(document.getElementById("monto").value);
+  const categoria = document.getElementById("categoria").value;
+  const nuevaCat = document.getElementById("nuevaCategoria").value.trim();
 
   if (!descripcion || isNaN(monto)) {
     alert("Por favor, completa la descripción y el monto correctamente.");
     return;
   }
 
-  const nuevoMovimiento = {
+  const movimiento = {
     tipo: tipo,
     descripcion: descripcion,
     monto: monto,
+    categoria: categoria === "otros" && nuevaCat ? nuevaCat : categoria,
     fecha: new Date().toLocaleDateString()
   };
 
-  movimientos.push(nuevoMovimiento);
+  movimientos.push(movimiento);
+
+  actualizarLista();
+  actualizarResumen();
+  mostrarGrafico();
+  limpiarCampos();
+}
+
   }
 }
 
