@@ -173,3 +173,81 @@ function mostrarGrafico() {
     }
   });
 }
+
+// Cargar movimientos guardados al iniciar
+document.addEventListener("DOMContentLoaded", () => {
+  actualizarCategorias();
+  document.getElementById("tipo").addEventListener("change", actualizarCategorias);
+  document.getElementById("categoria").addEventListener("change", mostrarCampoNuevo);
+  document.getElementById("mesadaInput").addEventListener("input", () => {
+    mesada = parseFloat(document.getElementById("mesadaInput").value) || 0;
+    evaluarMesada();
+  });
+
+  const guardados = localStorage.getItem("movimientos");
+  if (guardados) {
+    movimientos = JSON.parse(guardados);
+    actualizarLista();
+    actualizarResumen();
+    mostrarGrafico();
+  }
+});
+
+// Guardar en localStorage
+function guardarMovimientos() {
+  localStorage.setItem("movimientos", JSON.stringify(movimientos));
+}
+
+// Actualizar lista con botón de eliminar
+function actualizarLista() {
+  const lista = document.getElementById("movimientos");
+  lista.innerHTML = "";
+
+  movimientos.forEach((m, index) => {
+    const item = document.createElement("li");
+    item.innerHTML = `
+      ${m.tipo.toUpperCase()}: ${m.descripcion} - $${m.monto.toFixed(2)} [${m.categoria}]
+      <button onclick="eliminarMovimiento(${index})"><i class="fas fa-trash-alt"></i></button>
+    `;
+    lista.appendChild(item);
+  });
+
+  guardarMovimientos();
+}
+
+// Eliminar con opción de deshacer
+let movimientoEliminado = null;
+let indexEliminado = null;
+
+function eliminarMovimiento(index) {
+  movimientoEliminado = movimientos[index];
+  indexEliminado = index;
+  movimientos.splice(index, 1);
+  actualizarLista();
+  actualizarResumen();
+  mostrarGrafico();
+
+  const noti = document.getElementById("notificacion");
+  noti.innerHTML = `
+    <p>Movimiento eliminado. <button onclick="deshacerEliminacion()">Deshacer</button></p>
+  `;
+  noti.style.display = "block";
+
+  setTimeout(() => {
+    noti.style.display = "none";
+    movimientoEliminado = null;
+    indexEliminado = null;
+  }, 5000);
+}
+
+function deshacerEliminacion() {
+  if (movimientoEliminado !== null && indexEliminado !== null) {
+    movimientos.splice(indexEliminado, 0, movimientoEliminado);
+    actualizarLista();
+    actualizarResumen();
+    mostrarGrafico();
+    document.getElementById("notificacion").style.display = "none";
+    movimientoEliminado = null;
+    indexEliminado = null;
+  }
+}
