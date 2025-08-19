@@ -55,6 +55,12 @@ canvas {
   margin-top: 1em;
 }
 
+#graficoMovimientos {
+  max-width: 100%;
+  margin: auto;
+  display: block;
+}
+
 #alertaMesada {
   font-weight: bold;
   padding: 0.5em;
