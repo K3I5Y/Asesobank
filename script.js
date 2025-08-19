@@ -1,5 +1,6 @@
 let movimientos = [];
 let mesada = 0;
+let graficoActual = null;
 
 const categoriasGasto = ["alimento", "compras", "deudas", "otros"];
 const categoriasIngreso = ["ventas", "trabajo", "otros"];
@@ -100,10 +101,23 @@ function evaluarMesada() {
     .filter(m => m.tipo === "gasto")
     .reduce((sum, m) => sum + m.monto, 0);
 
+  const ingresos = movimientos
+    .filter(m => m.tipo === "ingreso")
+    .reduce((sum, m) => sum + m.monto, 0);
+
   const alerta = document.getElementById("alertaMesada");
+  const saldo = ingresos - gastos;
+  const saldoTexto = document.getElementById("saldoDisponible");
+  const barra = document.getElementById("progresoMesada");
+
+  saldoTexto.textContent = `Saldo disponible: $${saldo.toFixed(2)}`;
 
   if (mesada > 0) {
-    if (gastos > mesada) {
+    const porcentaje = Math.min((mesada - gastos) / mesada * 100, 100);
+    barra.style.width = `${porcentaje}%`;
+    barra.style.background = porcentaje < 0 ? "#b22222" : "#4caf50";
+
+    if (gastos > mesada && saldo < 0) {
       alerta.textContent = "⚠️ Has superado tu mesada";
       alerta.style.background = "#ffcccc";
       alerta.style.color = "#b22222";
@@ -115,8 +129,10 @@ function evaluarMesada() {
   } else {
     alerta.textContent = "";
     alerta.style.background = "transparent";
+    barra.style.width = "0%";
   }
 }
+
 
 function limpiarCampos() {
   document.getElementById("descripcion").value = "";
@@ -136,10 +152,11 @@ function mostrarGrafico() {
   const canvas = document.getElementById("graficoMovimientos");
   const ctx = canvas.getContext("2d");
 
-  // Limpia el canvas antes de dibujar
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (graficoActual) {
+    graficoActual.destroy();
+  }
 
-  new Chart(ctx, {
+  graficoActual = new Chart(ctx, {
     type: "doughnut",
     data: {
       labels: Object.keys(categorias),
