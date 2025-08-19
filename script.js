@@ -60,9 +60,6 @@ function agregarMovimiento() {
   limpiarCampos();
 }
 
-  }
-}
-
 function actualizarLista() {
   const lista = document.getElementById('movimientos');
   lista.innerHTML = '';
