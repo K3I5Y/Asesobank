@@ -66,3 +66,11 @@ canvas {
   padding: 0.5em;
   border-radius: 5px;
 }
+
+#notificacion {
+  font-weight: bold;
+  text-align:center; 
+  padding:1em; 
+  border-radius: 5px;
+}
+
