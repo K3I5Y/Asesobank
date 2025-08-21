@@ -6,11 +6,39 @@ body {
   color: #333;
 }
 
-header {
+header, footer {
   background: #800000;
   color: #fff;
   padding: 1em;
   text-align: center;
+}
+
+.header-images {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.header-images img {
+  max-width: 180px;
+  border-radius: 10px;
+}
+
+nav {
+  background-color: #B3E5FC;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+nav a {
+  margin: 10px;
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 main {
@@ -72,5 +100,48 @@ canvas {
   text-align:center; 
   padding:1em; 
   border-radius: 5px;
+}
+
+.qr-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.qr-box {
+  text-align: center;
+}
+
+.qr-box img {
+  width: 150px;
+  height: 150px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.qr-box img:hover {
+  transform: scale(1.05);
+}
+
+.qr-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-large {
+  width: 300px;
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
