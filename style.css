@@ -102,6 +102,18 @@ canvas {
   border-radius: 5px;
 }
 
+.qr-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em 1em;
+}
+
+.qr-wrapper {
+  text-align: center;
+}
+
 .qr-container {
   display: flex;
   justify-content: center;
