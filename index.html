@@ -78,14 +78,16 @@
   
 <div id="notificacion" style="display:none;"></div>
 
-  <section class="qr-container">
+  <section id="codigoqr">
+      <h2 style="text-align:left;">Código QR</h2>
+    <section class="qr-container">
   <div class="qr-box">
-    <h2 style="text-align:left;">Código QR</h2>
     <!-- <p><strong>Asesobank</strong></p> --> <!-- Esta línea se elimina -->
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://asesobank.com" alt="QR Asesobank" onclick="expandQR('https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://asesobank.com')">
   </div>
+  </section>
 </section>
-
+    
 <!-- Modal para ampliar QR -->
 <div id="qrModal" class="qr-modal">
   <img id="qrExpanded" class="qr-large" src="" alt="QR ampliado">
