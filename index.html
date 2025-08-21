@@ -18,11 +18,22 @@
   <header>
     <h1>💰ASESOBANK</h1>
     <p>Bienvenido/a a Asesobank, el espacio para tomar el control de tus finanzas con confianza y claridad.</p>
+    <div class="header-images">
+      <img src="qr_asesobank.png" alt="Logo de Asesobank">
+    </div>
   </header>
+
+  <nav>
+    <a href="#mesada">Mesada</a>
+    <a href="#registro">Registro de Cuentas</a>
+    <a href="#lista">Historial</a>
+    <a href="#resumen">Resumen</a>
+    <a href="#codigoqr">Código QR</a>
+  </nav>
 
   <main>
     <section id="mesada">
-      <h2>Tu mesada mensual</h2>
+      <h2>Tu mesada</h2>
       <input type="number" id="mesadaInput" placeholder="Ingresa tu mesada">
     </section>
 
@@ -63,19 +74,22 @@
     </section>
   </main>
 
-<li>
-  <span>Cuenta: Ahorros - $100.00</span>
-  <button onclick="borrarCuenta('ahorros')"><i class="fas fa-trash-alt"></i> Eliminar</button>
-</li>
-
 <div id="notificacion" style="display:none;"></div>
   
 <div id="notificacion" style="display:none;"></div>
+
+  <section id="codigoqr" class="section">
+    <h2>Código QR</h2>
+    <div class="qr-container">
+      <div class="qr-box">
+          <h3>Asesobank</h3>
+          <img src="qr_asesobank.png" alt="QR Asesobank" class="qr-small" onclick="expandQR()">
+        </div>
   
   <footer>
     <p>© 2025 Asesobank</p>
   </footer>
-
+  
   <!-- Chart.js desde CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
