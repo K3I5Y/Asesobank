@@ -15,7 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
     mesada = parseFloat(document.getElementById("mesadaInput").value) || 0;
     localStorage.setItem("mesada", mesada);
     evaluarMesada();
-  });
+});
+    document.getElementById("qrModal").addEventListener("click", function(e) {
+  // Si el clic fue directamente sobre el fondo (no sobre la imagen)
+  if (e.target.id === "qrModal") {
+    closeQR();
+  }
+});
 
   const guardados = localStorage.getItem("movimientos");
   if (guardados) {
@@ -56,8 +62,8 @@ function expandQR(imageSrc = null) {
   if (imageSrc) {
     qrExpanded.src = imageSrc;
   } else {
-    const qrURL = 'https://k3i5y.github.io/English-Week/';
-    qrExpanded.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrURL)}`;
+    const qrURL = 'https://k3i5y.github.io/Asesobank/';
+    qrExpanded.src = `qr_asesobank.png{encodeURIComponent(qrURL)}`;
   }
 
   qrModal.style.display = 'flex';
