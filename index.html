@@ -78,13 +78,21 @@
   
 <div id="notificacion" style="display:none;"></div>
 
-  <section id="codigoqr" class="section">
-    <h2>Código QR</h2>
-    <div class="qr-container">
-      <div class="qr-box">
-          <h3>Asesobank</h3>
-          <img src="qr_asesobank.png" alt="QR Asesobank" class="qr-small" onclick="expandQR()">
-        </div>
+  <section class="qr-container">
+  <div class="qr-box">
+    <h2 style="text-align:left;">Código QR</h2>
+    <p><strong>Asesobank</strong></p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://asesobank.com" alt="QR Asesobank" onclick="expandQR('https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://asesobank.com')">
+  </div>
+  <div class="qr-box" style="background:#800000; color:white; padding:1em; border-radius:12px; display:flex; align-items:center; justify-content:center;">
+    <span>© 2025 Asesobank</span>
+  </div>
+</section>
+
+<!-- Modal para ampliar QR -->
+<div id="qrModal" class="qr-modal">
+  <img id="qrExpanded" class="qr-large" src="" alt="QR ampliado">
+</div>
   
   <footer>
     <p>© 2025 Asesobank</p>
